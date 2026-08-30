@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
-  "test": "echo 'All baseline CI checks passed' && exit 0"
-},
-  "keywords": [],
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {

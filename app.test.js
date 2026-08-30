@@ -1,0 +1,26 @@
+const request = require('supertest');
+const app = require('./app');
+
+describe('Core API Endpoints', () => {
+  describe('GET /api/products', () => {
+    it('should return status 200 and a list of products', async () => {
+      const response = await request(app).get('/api/products');
+
+      expect(response.status).toBe(200);
+      expect(Array.isArray(response.body)).toBe(true);
+      expect(response.body.length).toBeGreaterThan(0);
+    });
+
+    it('should return products with correct schema properties', async () => {
+      const response = await request(app).get('/api/products');
+      const product = response.body[0];
+
+      expect(product).toHaveProperty('id');
+      expect(product).toHaveProperty('name');
+      expect(product).toHaveProperty('price');
+      expect(product).toHaveProperty('category');
+      expect(product).toHaveProperty('image');
+      expect(typeof product.price).toBe('number');
+    });
+  });
+});
